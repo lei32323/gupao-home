@@ -10,9 +10,25 @@ public class ThreadLocalSingle {
     private static ThreadLocal<ThreadLocalSingle> threadLocalSingleThreadLocal = new ThreadLocal<>();
 
 
-    private ThreadLocalSingle(){}
+    private ThreadLocalSingle(){
+        if(threadLocalSingleThreadLocal.get()!=null){
+            throw new RuntimeException("非法创建");
+        }
+    }
 
 
-    private void
+    public static ThreadLocalSingle getInstance(){
+        if(threadLocalSingleThreadLocal.get()==null){
+            threadLocalSingleThreadLocal.set(new ThreadLocalSingle());
+        }
+        return threadLocalSingleThreadLocal.get();
+    }
+
+    //防止反序列化
+    private Object readResolve(){
+        return threadLocalSingleThreadLocal.get();
+    }
+
+
 
 }
