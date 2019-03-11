@@ -98,6 +98,9 @@ json形式(fastjson:2266ms GSON:4153ms)
 反射形式(2358ms)
 spring的Bean形式(2073ms)
 BeanCopier(1096ms)
+
 `BeanCopier < spring的BeanUtils  < JDK形式 < fastjson < 反射形式 < GSON < byte`
+
+
 
 总结：BeanCopier一直的比较稳定，其次是spring的BeanUtils.
