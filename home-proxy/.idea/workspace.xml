@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7bb2645d-09bb-464a-a45d-640625df53d0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/staticproxy/Son.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../home-singleton/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../home-singleton/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../home-singleton/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../home-singleton/README.md" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="247">
+                <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/IOrderService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/OrderService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="40" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="e#125#126#0" expanded="true" />
+                <element signature="e#150#151#0" expanded="true" />
+                <element signature="e#184#185#0" expanded="true" />
+                <element signature="e#212#213#0" expanded="true" />
+                <element signature="e#103#104#0" expanded="true" />
+                <element signature="e#130#131#0" expanded="true" />
+                <element signature="e#170#171#0" expanded="true" />
+                <element signature="e#202#203#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/proxy/OrderServiceProxy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="30" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#332#333#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/DBSourceProxyTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://JAVA/dnroute.DBSourceProxyTest">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>dnroute.DBSourceProxyTest</OriginalElement>
+              <nodes>
+                <node x="10.5" y="80.0">dnroute.db.DynamicDataSourceEntity</node>
+                <node x="212.81481481481478" y="240.0">dnroute.DBSourceProxyTest</node>
+                <node x="48.875" y="160.0">dnroute.proxy.OrderServiceProxy</node>
+                <node x="214.9814814814815" y="0.0">dnroute.IOrderService</node>
+                <node x="220.5" y="80.0">dnroute.OrderService</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="dnroute.DBSourceProxyTest" target="dnroute.IOrderService">
+                  <point x="51.666666666666686" y="-15.0" />
+                  <point x="341.98148148148147" y="215.0" />
+                  <point x="350.0" y="215.0" />
+                  <point x="350.0" y="55.0" />
+                  <point x="316.64814814814815" y="55.0" />
+                  <point x="40.66666666666663" y="15.0" />
+                </edge>
+                <edge source="dnroute.DBSourceProxyTest" target="dnroute.OrderService">
+                  <point x="0.0" y="-15.0" />
+                  <point x="290.3148148148148" y="215.0" />
+                  <point x="310.64814814814815" y="215.0" />
+                  <point x="310.64814814814815" y="140.0" />
+                  <point x="319.66666666666663" y="140.0" />
+                  <point x="39.66666666666663" y="15.0" />
+                </edge>
+                <edge source="dnroute.OrderService" target="dnroute.IOrderService">
+                  <point x="0.0" y="-15.0" />
+                  <point x="280.0" y="55.0" />
+                  <point x="275.9814814814815" y="55.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.OrderService">
+                  <point x="56.625" y="-15.0" />
+                  <point x="181.0" y="140.0" />
+                  <point x="280.0" y="140.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="dnroute.DBSourceProxyTest" target="dnroute.proxy.OrderServiceProxy">
+                  <point x="-51.66666666666666" y="-15.0" />
+                  <point x="238.64814814814812" y="215.0" />
+                  <point x="124.375" y="215.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.db.DynamicDataSourceEntity">
+                  <point x="-18.875" y="-15.0" />
+                  <point x="0.0" y="15.0" />
+                </edge>
+                <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.IOrderService">
+                  <point x="-56.625" y="-15.0" />
+                  <point x="67.75" y="140.0" />
+                  <point x="0.0" y="140.0" />
+                  <point x="0.0" y="55.0" />
+                  <point x="235.31481481481484" y="55.0" />
+                  <point x="-40.66666666666666" y="15.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="-241.5" y="3.0" />
+              <SelectedNodes />
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dnroute/db/DynamicDataSourceEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="30" />
+              <folding>
+                <element signature="e#318#319#0" expanded="true" />
+                <element signature="e#358#359#0" expanded="true" />
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#514#515#0" expanded="true" />
+                <element signature="e#561#562#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/staticproxy/ProxyMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/staticproxy/Son.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+              <folding>
+                <element signature="e#105#106#0" expanded="true" />
+                <element signature="e#141#142#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/staticproxy/IPeople.java" />
+        <option value="$PROJECT_DIR$/src/staticproxy/Son.java" />
+        <option value="$PROJECT_DIR$/src/staticproxy/ProxyMain.java" />
+        <option value="$PROJECT_DIR$/src/staticproxy/Mother.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/IOrderService.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/OrderService.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/proxy/Dynamic.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/proxy/DynamicDBFactory.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/proxy/OrderServiceProxy.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/Order.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/DBSourceProxyTest.java" />
+        <option value="$PROJECT_DIR$/src/dnroute/db/DynamicDataSourceEntity.java" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="85" />
+    <option name="y" value="25" />
+    <option name="width" value="1750" />
+    <option name="height" value="980" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dnroute" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dnroute" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dnroute" type="462c0819:PsiDirectoryNode" />
+              <item name="proxy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="home-proxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="home-proxy" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="staticproxy" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552305829628" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="J:\gupaoedu\gupao-home\home-proxy\uml" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.DBSourceProxyTest">
+    <configuration name="DBSourceProxyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="dnroute.DBSourceProxyTest" />
+      <module name="home-proxy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dnroute.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="home-proxy" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProxyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="staticproxy.ProxyMain" />
+      <module name="home-proxy" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ProxyMain" />
+      <item itemvalue="Application.DBSourceProxyTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DBSourceProxyTest" />
+        <item itemvalue="Application.ProxyMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7bb2645d-09bb-464a-a45d-640625df53d0" name="Default Changelist" comment="" />
+      <created>1552302502409</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552302502409</updated>
+      <workItem from="1552302524814" duration="3203000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3203000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Designer" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info id="UI Designer" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17705382" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding>
+            <element signature="e#64#65#0" expanded="true" />
+            <element signature="e#114#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/staticproxy/IPeople.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/staticproxy/Mother.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#129#130#0" expanded="true" />
+            <element signature="e#167#168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/staticproxy/ProxyMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/text/DateFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="309" selection-start-line="309" selection-end-line="309" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/text/Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+          <folding>
+            <element signature="e#5629#5630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/staticproxy/Son.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding>
+            <element signature="e#105#106#0" expanded="true" />
+            <element signature="e#141#142#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#125#126#0" expanded="true" />
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#103#104#0" expanded="true" />
+            <element signature="e#130#131#0" expanded="true" />
+            <element signature="e#170#171#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/IOrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/OrderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/proxy/OrderServiceProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#332#333#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/DBSourceProxyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dnroute/db/DynamicDataSourceEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="30" />
+          <folding>
+            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#561#562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/dnroute.DBSourceProxyTest">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>dnroute.DBSourceProxyTest</OriginalElement>
+          <nodes>
+            <node x="10.5" y="80.0">dnroute.db.DynamicDataSourceEntity</node>
+            <node x="212.81481481481478" y="240.0">dnroute.DBSourceProxyTest</node>
+            <node x="48.875" y="160.0">dnroute.proxy.OrderServiceProxy</node>
+            <node x="214.9814814814815" y="0.0">dnroute.IOrderService</node>
+            <node x="220.5" y="80.0">dnroute.OrderService</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="dnroute.DBSourceProxyTest" target="dnroute.IOrderService">
+              <point x="51.666666666666686" y="-15.0" />
+              <point x="341.98148148148147" y="215.0" />
+              <point x="350.0" y="215.0" />
+              <point x="350.0" y="55.0" />
+              <point x="316.64814814814815" y="55.0" />
+              <point x="40.66666666666663" y="15.0" />
+            </edge>
+            <edge source="dnroute.DBSourceProxyTest" target="dnroute.OrderService">
+              <point x="0.0" y="-15.0" />
+              <point x="290.3148148148148" y="215.0" />
+              <point x="310.64814814814815" y="215.0" />
+              <point x="310.64814814814815" y="140.0" />
+              <point x="319.66666666666663" y="140.0" />
+              <point x="39.66666666666663" y="15.0" />
+            </edge>
+            <edge source="dnroute.OrderService" target="dnroute.IOrderService">
+              <point x="0.0" y="-15.0" />
+              <point x="280.0" y="55.0" />
+              <point x="275.9814814814815" y="55.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.OrderService">
+              <point x="56.625" y="-15.0" />
+              <point x="181.0" y="140.0" />
+              <point x="280.0" y="140.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="dnroute.DBSourceProxyTest" target="dnroute.proxy.OrderServiceProxy">
+              <point x="-51.66666666666666" y="-15.0" />
+              <point x="238.64814814814812" y="215.0" />
+              <point x="124.375" y="215.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.db.DynamicDataSourceEntity">
+              <point x="-18.875" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="dnroute.proxy.OrderServiceProxy" target="dnroute.IOrderService">
+              <point x="-56.625" y="-15.0" />
+              <point x="67.75" y="140.0" />
+              <point x="0.0" y="140.0" />
+              <point x="0.0" y="55.0" />
+              <point x="235.31481481481484" y="55.0" />
+              <point x="-40.66666666666666" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="-241.5" y="3.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="247">
+            <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
