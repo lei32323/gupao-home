@@ -14,3 +14,6 @@
 
 [单例模式](home-singleton)
 
+
+
+[代理模式](home-proxy)
