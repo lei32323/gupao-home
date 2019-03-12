@@ -3,10 +3,10 @@ package staticproxy;
 public class Mother {
 
 
-    private IPeople iPeople ;
+    private IProsen iPeople ;
 
     //Жљзг
-    public Mother(IPeople iPeople) {
+    public Mother(IProsen iPeople) {
         this.iPeople = iPeople;
     }
 

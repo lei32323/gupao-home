@@ -1,8 +1,6 @@
 package staticproxy;
 
-import staticproxy.IPeople;
-
-public class Son implements IPeople {
+public class Son implements IProsen {
 
 
     @Override

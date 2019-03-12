@@ -1,6 +1,6 @@
 package staticproxy;
 
-public interface IPeople {
+public interface IProsen {
 
     void FindObject();
 
