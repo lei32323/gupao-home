@@ -11,6 +11,7 @@ public class MeiPoProxy implements MethodInterceptor {
     public Object getInstance(Class<?> clazz) {
         //相当于Proxy，代理的工具类
         Enhancer enhancer = new Enhancer();
+
         enhancer.setSuperclass(clazz);
         enhancer.setCallback(this);
         return enhancer.create();
