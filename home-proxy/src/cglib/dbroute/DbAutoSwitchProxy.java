@@ -10,7 +10,9 @@ import java.util.Date;
 
 /**
  * 数据库字段切换
- *
+ *  1.生成代理类效率慢（要生成3个文件)。(因为使用的是AMS框架写的)
+ *  2.执行代理类效率快。因为有个fastClass,把所以的方法保存起来，通过index来进行查找方法，效率很快
+ *  3.使用的是新建类 继承需要代理的类，重写方法。
  */
 public class DbAutoSwitchProxy implements MethodInterceptor {
 
