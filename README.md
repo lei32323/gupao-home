@@ -17,3 +17,7 @@
 
 
 [代理模式](home-proxy)
+
+
+
+[策略模式](home-strategy)
