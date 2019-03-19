@@ -29,3 +29,11 @@
 
 
 [适配器模式](home-adapter)
+
+
+
+[装饰器模式](home-decorator)
+
+
+
+[观察者模式](home-observer)
