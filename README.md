@@ -21,3 +21,11 @@
 
 
 [策略模式](home-strategy)
+
+
+
+[模板模式](home-template)
+
+
+
+[适配器模式](home-adapter)
