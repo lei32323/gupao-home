@@ -71,3 +71,33 @@
   + 注册到ioc中 `beanDefinitionMap` 中
   + 注册到`manualSingletonNames` 中
   + 注册到`beanDefinitionNames`中
+
+
+
+
+
+# 具体类的作用
+
++ `AbstractApplicationContext`
+  + ApplicationContext的抽象类，包含了所有的方法
+
++ `AbstractRefreshableApplicationContext`
+  + 主要用来刷新上下文
+
++ `XmlWebApplicationContext`
+  + 主要用来处理xml的上下文
+
++ `AbstractBeanDefinitionReader`
+  + 解析beanDefinition的抽象类
+
++ `BeanDefinitionDocumentReader`
+  + 具体解析BeanDefinition的实现类 解析Document
+
++ `BeanDefinitionReaderUtils`
+  + 获取reader的别名
+
++ `DefaultListableBeanFactory`
+  + 具体注册的类，真正处理的类
+
+
+
