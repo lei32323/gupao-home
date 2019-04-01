@@ -1,6 +1,6 @@
 # Spring ioc
 
-![时序图](J:\gupaoedu\gupao-home\uml\spring-ioc.png)
+![时序图](uml\spring-ioc.png)
 
 
 
@@ -103,4 +103,4 @@
 
 # 注解ioc 的时序图
 
-![注解ioc的实现](J:\gupaoedu\gupao-home\uml\注解-ioc.png)
+![注解ioc的实现](uml\注解-ioc.png)
