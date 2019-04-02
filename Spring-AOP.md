@@ -1,5 +1,80 @@
 # Spring DI
 
+
+
+![spring-aop](uml\spring-aop.png)
+
+## 解析：
+
+**创建代理器**
+
++ 从DI开始，发现`AbstractAutowireCapableBeanFactory#doCreateBean` 是获取bean的方法->
+
++ 通过aop的面向切面的特性，所以只要找到bean初始化的地方，查看`AbstractAutowireCapableBeanFactory#initializeBean`方法->
+  + 设置bean的相关属性，如名称，类加载器，所属容器等信息
+  + 初始化对象之前做的事情  `applyBeanPostProcessorsBeforeInitialization`
+  + 初始化对象 `invokeInitMethods`
+  + 初始化对象之后做的事情 `applyBeanPostProcessorsAfterInitialization`
++ 设置后置处理器 初始化对象之后做的事情 `org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization` ->
+  + 设置后置处理器的初始化方法
++ 先从缓存中获取 `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#postProcessAfterInitialization` ->
+  + 当后置处理器不存在的时候 包装传入的bean
++ `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#wrapIfNecessary`  包装bean->
+  + 判断是否可以代理bean
+  + 获取通告advice 集合
+  + 进入创建代理对象的方法
++ `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#createProxy`  创建代理对象->
+  + 创建`proxyFactory`
+  + 设置Advisor
+  + 设置目标资源
+  + 创建代理对象
++ `org.springframework.aop.framework.ProxyFactory#getProxy(java.lang.ClassLoader)`  获取apoProxy ->
++ `org.springframework.aop.framework.ProxyCreatorSupport#createAopProxy` 获取创建代理对象的factory ->
++ `org.springframework.aop.framework.DefaultAopProxyFactory#createAopProxy`  创建代理对象的factory ->
+  + 判断需要代理的类是否有接口
+    + 有接口返回jdk proxyFactory
+    + 不是的话返回cglib ProxyFactory
+  + 默认走jdk proxyFactory
++ `org.springframework.aop.framework.JdkDynamicAopProxy#getProxy(java.lang.ClassLoader)`  真正创建代理对象的方法(只看jdk的)->
+  + 获取代理对象的接口
+  + 设置equals和hashcode方法
+  + 通过Proxy创建代理类
+
+**调用具体的方法**
+
++ `org.springframework.aop.framework.JdkDynamicAopProxy#invoke` 代理对象的回调函数 ->
+
+  > 因为`JdkDynamicAopProxy` 实现了`InvocationHandler` ，所以只要找到当前类的invoke就可以了
+
+  + 获取目标对象
+  + 获取advise的链信息 `org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry` **类实现,并且保存到缓存**
+    + 包括
+      + `MethodBeforeAdviceAdapter`   之前的操作
+      + `AfterReturningAdviceAdapter` 之后的操作
+      + `ThrowsAdviceAdapter`  异常的操作
+    + 其他的拦截器
+  + 循环切入点
+  + 找到符合切入点的方法
+  + 符合的话保存到集合
+
+**发起通知**
+
++ `org.springframework.aop.framework.ReflectiveMethodInvocation#proceed` 反射执行调用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 `org.springframework.beans.factory.support.SimpleInstantiationStrategy#instantiate(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.String, org.springframework.beans.factory.BeanFactory, java.lang.Object, java.lang.reflect.Method, java.lang.Object...)`  获取当前正在执行factoryMethod  反射获得实体
 
 `org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#populateBean` 对bean进行封装
@@ -113,77 +188,6 @@ isSingleton 是否是单例的bean
 获取FactoryBeand的时候 名称前面要加上&符号
 
 具体的实现类：AbstractSingletonProxyFactoryBean,ListFactoryBean
-
-
-
-
-
-![spring-aop](J:\gupaoedu\gupao-home\uml\spring-aop.png)
-
-## 解析：
-
-**创建代理器**
-
-+ 从DI开始，发现`AbstractAutowireCapableBeanFactory#doCreateBean` 是获取bean的方法->
-
-+ 通过aop的面向切面的特性，所以只要找到bean初始化的地方，查看`AbstractAutowireCapableBeanFactory#initializeBean`方法->
-  + 设置bean的相关属性，如名称，类加载器，所属容器等信息
-  + 初始化对象之前做的事情  `applyBeanPostProcessorsBeforeInitialization`
-  + 初始化对象 `invokeInitMethods`
-  + 初始化对象之后做的事情 `applyBeanPostProcessorsAfterInitialization`
-+ 设置后置处理器 初始化对象之后做的事情 `org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization` ->
-  + 设置后置处理器的初始化方法
-+ 先从缓存中获取 `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#postProcessAfterInitialization` ->
-  + 当后置处理器不存在的时候 包装传入的bean
-+ `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#wrapIfNecessary`  包装bean->
-  + 判断是否可以代理bean
-  + 获取通告advice 集合
-  + 进入创建代理对象的方法
-+ `org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#createProxy`  创建代理对象->
-  + 创建`proxyFactory`
-  + 设置Advisor
-  + 设置目标资源
-  + 创建代理对象
-+ `org.springframework.aop.framework.ProxyFactory#getProxy(java.lang.ClassLoader)`  获取apoProxy ->
-+ `org.springframework.aop.framework.ProxyCreatorSupport#createAopProxy` 获取创建代理对象的factory ->
-+ `org.springframework.aop.framework.DefaultAopProxyFactory#createAopProxy`  创建代理对象的factory ->
-  + 判断需要代理的类是否有接口
-    + 有接口返回jdk proxyFactory
-    + 不是的话返回cglib ProxyFactory
-  + 默认走jdk proxyFactory
-+ `org.springframework.aop.framework.JdkDynamicAopProxy#getProxy(java.lang.ClassLoader)`  真正创建代理对象的方法(只看jdk的)->
-  + 获取代理对象的接口
-  + 设置equals和hashcode方法
-  + 通过Proxy创建代理类
-
-**调用具体的方法**
-
-+ `org.springframework.aop.framework.JdkDynamicAopProxy#invoke` 代理对象的回调函数 ->
-
-  > 因为`JdkDynamicAopProxy` 实现了`InvocationHandler` ，所以只要找到当前类的invoke就可以了
-
-  + 获取目标对象
-  + 获取advise的链信息 `org.springframework.aop.framework.adapter.DefaultAdvisorAdapterRegistry` **类实现,并且保存到缓存**
-    + 包括
-      + `MethodBeforeAdviceAdapter`   之前的操作
-      + `AfterReturningAdviceAdapter` 之后的操作
-      + `ThrowsAdviceAdapter`  异常的操作
-    + 其他的拦截器
-  + 循环切入点
-  + 找到符合切入点的方法
-  + 符合的话保存到集合
-
-**发起通知**
-
-+ `org.springframework.aop.framework.ReflectiveMethodInvocation#proceed` 反射执行调用
-
-
-
-
-
-
-
-
 
 
 
