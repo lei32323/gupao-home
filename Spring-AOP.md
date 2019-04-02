@@ -2,7 +2,7 @@
 
 
 
-![spring-aop](uml\spring-aop.png)
+![spring-aop](uml/spring-aop.png)
 
 ## 解析：
 
