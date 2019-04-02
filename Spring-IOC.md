@@ -24,9 +24,9 @@
 
 + 通过`AbstractRefreshableApplicationContext#loadBeanDefinitions()` -> 
 
-+ 调用真正解析的子类`XmlWebApplicationContext`的`loadBeanDefinitions(DefaultListableBeanFactory)` ->
++ 调用真正解析的子类`AbstractXmlApplicationContext`的`loadBeanDefinitions(DefaultListableBeanFactory)` ->
   + 根据`beanFactory` 创建一个`XmlBeanDefinitionReader` 对象，用来解析XML
-+ 调用`XmlWebApplicationContext`的`loadBeanDefinitions(XmlBeanDefinitionReader)` ->
++ 调用`AbstractXmlApplicationContext`的`loadBeanDefinitions(XmlBeanDefinitionReader)` ->
   + 循环传入的配置路径
   + 通过之前创建的`XmlBeanDefinitionReader`来进行解析每一个配置文件
 
@@ -84,8 +84,8 @@
 + `AbstractRefreshableApplicationContext`
   + 主要用来刷新上下文
 
-+ `XmlWebApplicationContext`
-  + 主要用来处理xml的上下文
++ `AbstractXmlApplicationContext`
+  + 主要用来处理xml的上下文抽象类
 
 + `AbstractBeanDefinitionReader`
   + 解析beanDefinition的抽象类
@@ -98,6 +98,14 @@
 
 + `DefaultListableBeanFactory`
   + 具体注册的类，真正处理的类
+
+
+
+
+
+
+
+
 
 
 
