@@ -13,7 +13,7 @@ public class BeanDefinition {
     /**
      * 是否延迟加载
      */
-    private boolean isLazyInit;
+    private boolean isLazyInit = false;
 
     /**
      * 存在于工厂里面的名称
