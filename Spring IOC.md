@@ -1,6 +1,6 @@
 # Spring ioc
 
-![时序图](uml\spring-ioc.png)
+![时序图](uml/spring-ioc.png)
 
 
 
