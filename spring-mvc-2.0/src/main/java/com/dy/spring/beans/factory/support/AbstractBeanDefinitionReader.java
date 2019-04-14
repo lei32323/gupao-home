@@ -80,9 +80,13 @@ public class AbstractBeanDefinitionReader {
         return beanDefinitions;
     }
 
-    private String toFirstLow(String str) {
+    public static String toFirstLow(String str) {
         char[] chars = str.toCharArray();
         chars[0] += 32;
         return String.valueOf(chars);
+    }
+
+    public Properties getConfig(){
+        return this.config;
     }
 }

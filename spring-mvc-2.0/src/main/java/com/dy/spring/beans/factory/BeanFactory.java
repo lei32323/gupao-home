@@ -6,7 +6,12 @@ public interface BeanFactory {
      * 获取bean
      * @return
      */
-    public Object getBean();
+    Object getBean(Class<?> clazz);
 
+    /**
+     * 获取bean
+     * @return
+     */
+    Object getBean(String className);
 
 }
