@@ -12,9 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class AbstractApplicationContext {
 
     //刷新的方法
-    public void refresh() {
-
-    }
+    public abstract void refresh() ;
 
 
 }
