@@ -202,6 +202,17 @@ isSingleton 是否是单例的bean
 
 
 
+`org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization`  初始化后应用
+
+`org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#postProcessAfterInitialization` 初始化后应用
+
+`org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator#wrapIfNecessary` 必要时包装给定的bean，即它是否有资格被代理。
+
+`org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator#getAdvicesAndAdvisorsForBean` 根据bean获取advices
+
+`org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator#findEligibleAdvisors`  执行获取advisor
+
+`org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper#findAdvisorBeans` 真正查询advisor的操作
 
 
 
@@ -209,6 +220,25 @@ isSingleton 是否是单例的bean
 
 
 
+`org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator#findCandidateAdvisors` 核心方法
+
+`org.springframework.aop.aspectj.annotation.BeanFactoryAspectJAdvisorsBuilder#buildAspectJAdvisors` 加载advisors
+
+
+
+第一步。 获取所有的advisor 
+
+​	获取Advisor类型的所有的advisorName集合
+
+​	根据name和Advisor类型从beanFactory中获取实例
+
+​	保存到advisors
+
+第二步。应用advisor到对应的bean中
+
+​	验证advisor和当前的类型是否是相匹配的
+
+第三步。创建代理对象
 
 
 
