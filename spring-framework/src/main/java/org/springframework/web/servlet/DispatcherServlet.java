@@ -43,17 +43,21 @@ public class DispatcherServlet extends HttpServlet {
 
     private void doDispatch(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
+        //获取request对应的handler
         HandlerMapping handler = getHandler(req);
         if (handler == null) {
             processDispatchResult(req, resp, new ModelAndView("404", new HashMap<>()));
             return;
         }
 
+        //获取参数解析器
         HandlerAdapter handlerAdapter = getHandlerAdapter(handler);
 
+        //获取modelAndView
         ModelAndView modelAndView = handlerAdapter.handle(req, resp, handler);
 
         try {
+            //执行
             processDispatchResult(req, resp, modelAndView);
         } catch (Exception e) {
             Map result = new HashMap<String, Object>();
@@ -75,7 +79,11 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     private HandlerAdapter getHandlerAdapter(HandlerMapping handler) {
-        return handlerAdapters.get(handler);
+        HandlerAdapter ha = handlerAdapters.get(handler);
+        if(ha.supports(handler)){
+            return ha;
+        }
+        return null;
     }
 
     private HandlerMapping getHandler(HttpServletRequest req) {

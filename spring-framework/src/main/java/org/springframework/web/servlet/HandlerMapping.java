@@ -17,10 +17,6 @@ public class HandlerMapping {
         this.controller = controller;
     }
 
-    //根据request获取对应的handler
-    public final HandlerExecutionChain getHandler(HttpServletRequest request){
-        return null;
-    }
 
     public String getUrl() {
         return url;
