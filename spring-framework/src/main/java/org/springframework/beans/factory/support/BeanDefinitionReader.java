@@ -93,4 +93,12 @@ public class BeanDefinitionReader {
     public DefaultListableBeanFactory getRegistry() {
         return registry;
     }
+
+    public Properties getConfig() {
+        return config;
+    }
+
+    public void setConfig(Properties config) {
+        this.config = config;
+    }
 }

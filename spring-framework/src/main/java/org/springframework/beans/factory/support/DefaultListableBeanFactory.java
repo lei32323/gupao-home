@@ -19,6 +19,14 @@ public class DefaultListableBeanFactory implements BeanFactory {
     }
 
 
+    public String[] getBeanDefinitionNames() {
+        return this.beanDefinitionMap.keySet().toArray(new String[this.beanDefinitionMap.size()]);
+    }
+
+    public int getBeanDefinitionCount() {
+        return this.beanDefinitionMap.size();
+    }
+
     @Override
     public Object getBean(String name) {
         return null;

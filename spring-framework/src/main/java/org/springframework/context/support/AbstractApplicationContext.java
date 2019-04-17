@@ -28,6 +28,10 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
     //存放循环依赖的集合的  spring中使用的是factory 这里直接使用object来存储
     private final Map<String, Object> singletonFactories = new ConcurrentHashMap<>();
 
+    //缓存beanWrapper集合
+    private Map<String, BeanWrapper> factoryBeanInstanceCache = new ConcurrentHashMap<String, BeanWrapper>();
+
+
     public AbstractApplicationContext(String configLocation) {
         this.configLocation = configLocation;
     }
@@ -91,7 +95,11 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
             //这里使用默认构造函数
             newInstance = clazz.newInstance();
 
-            BeanWrapper beanWrapper = new BeanWrapper(newInstance);
+            BeanWrapper beanWrapper = null;
+            if (!factoryBeanInstanceCache.containsKey(beanName)) {
+                beanWrapper = new BeanWrapper(newInstance);
+                factoryBeanInstanceCache.put(beanName, beanWrapper);
+            }
 
             //保存到三级缓存中
             this.singletonFactories.put(beanName, newInstance);
@@ -152,5 +160,9 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
             singletonFactories.remove(beanName);
         }
         return singletonObject;
+    }
+
+    public BeanDefinitionReader getReader() {
+        return reader;
     }
 }
