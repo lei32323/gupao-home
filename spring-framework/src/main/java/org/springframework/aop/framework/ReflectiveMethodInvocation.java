@@ -1,5 +1,6 @@
 package org.springframework.aop.framework;
 
+import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.Method;
@@ -56,9 +57,9 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
         } else {
             //说明有其他的拦截器
             Object interceptor = this.interceptorsAndDynamicMethodMatchers.get(++currentInterceptorIndex);
-            if (interceptor instanceof MethodInvocation) {
-                MethodInvocation mi = (MethodInvocation) interceptor;
-                return mi.getMethod().invoke(this.target,this.arguments);
+            if (interceptor instanceof MethodInterceptor) {
+                MethodInterceptor mi = (MethodInterceptor) interceptor;
+                return mi.invoke(this);
             }
         }
         return proceed();

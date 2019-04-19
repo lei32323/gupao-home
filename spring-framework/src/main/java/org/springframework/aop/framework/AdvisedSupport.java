@@ -61,7 +61,7 @@ public class AdvisedSupport {
                 .replaceAll("\\(", "\\\\(")
                 .replaceAll("\\)", "\\\\)");
         String pointCutForClassRegex = pointCut.substring(0, pointCut.lastIndexOf("\\(") - 4);
-        pointCutClassPattern = Pattern.compile(" *" + pointCutForClassRegex.substring(pointCutForClassRegex.lastIndexOf(" ") + 1));
+        pointCutClassPattern = Pattern.compile(".*" + pointCutForClassRegex.substring(pointCutForClassRegex.lastIndexOf(" ") + 1)+".*");
 
         try {
             //获取织入的类
@@ -75,7 +75,7 @@ public class AdvisedSupport {
             }
 
             //遍历当前传入的类是否满足进行aop切面
-            Method[] targetMethods = targetClass.getMethods();
+            Method[] targetMethods = targetClass.getDeclaredMethods();
             for (int i = 0; i < targetMethods.length; i++) {
                 //获取方法的toString()
                 String targetMethodString = targetMethods[i].toString();
@@ -92,14 +92,14 @@ public class AdvisedSupport {
                     //满足的话。设置通知器(拦截器) after  before  throwing...
                     if (config.getAspectBefore() != null && !"".equals(config.getAspectBefore())) {
                         //创建拦截器
-                        advisors.add(new MethodBeforeAdviceInterceptor(aspectMethods.get(targetMethods[i]), aspectclazz.newInstance()));
+                        advisors.add(new MethodBeforeAdviceInterceptor(aspectMethods.get(config.getAspectBefore()), aspectclazz.newInstance()));
                     }
                     if (config.getAspectAfter() != null && !"".equals(config.getAspectAfter())) {
-                        advisors.add(new AfterReturningAdviceInterceptor(aspectMethods.get(targetMethods[i]), aspectclazz.newInstance()));
+                        advisors.add(new AfterReturningAdviceInterceptor(aspectMethods.get(config.getAspectAfter()), aspectclazz.newInstance()));
 
                     }
                     if (config.getAspectAfterThrow() != null && !"".equals(config.getAspectAfterThrow())) {
-                        AspectJAfterThrowingAdvice aspectJAfterThrowingAdvice = new AspectJAfterThrowingAdvice(aspectMethods.get(targetMethods[i]), aspectclazz.newInstance());
+                        AspectJAfterThrowingAdvice aspectJAfterThrowingAdvice = new AspectJAfterThrowingAdvice(aspectMethods.get(config.getAspectAfterThrow()), aspectclazz.newInstance());
                         aspectJAfterThrowingAdvice.setDiscoveredThrowingType(config.getAspectAfterThrowingName());
                         advisors.add(aspectJAfterThrowingAdvice);
                     }
