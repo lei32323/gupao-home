@@ -43,9 +43,12 @@ public class BeanDefinitionReader {
             if (f.isDirectory()) {
                 //找到下一级文件夹
                 doScan(scanPackage + "." + f.getName());
+            } else {
+                if (f.getName().endsWith(".class")) {
+                    //保存起来
+                    registerBeanClass.add(scanPackage + "." + (f.getName().replace(".class", "")));
+                }
             }
-            //保存起来
-            registerBeanClass.add(scanPackage + "." + (f.getName().replace(".class","")));
         }
     }
 

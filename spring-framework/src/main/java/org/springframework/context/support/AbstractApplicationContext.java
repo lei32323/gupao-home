@@ -1,6 +1,10 @@
 package org.springframework.context.support;
 
 import org.springframework.annotation.Autowired;
+import org.springframework.aop.framework.AdvisedSupport;
+import org.springframework.aop.framework.AopProxy;
+import org.springframework.aop.framework.DefaultAopProxyFactory;
+import org.springframework.aop.framework.ProxyConfig;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
@@ -89,15 +93,17 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
             //从缓存中获取beanDeifnition
             mbd = this.reader.getRegistry().getBeanDefinition(beanName);
             //创建Bean对象返回
-            String beanClassName = mbd.getBeanClassName();
-            Class<?> clazz = Class.forName(beanClassName);
+//            String beanClassName = mbd.getBeanClassName();
+//            Class<?> clazz = Class.forName(beanClassName);
 
             //这里使用默认构造函数
-            newInstance = clazz.newInstance();
+//            newInstance = clazz.newInstance();
 
             BeanWrapper beanWrapper = null;
             if (!factoryBeanInstanceCache.containsKey(beanName)) {
-                beanWrapper = new BeanWrapper(newInstance);
+                beanWrapper = instantiateBean(beanName, mbd);
+                newInstance = beanWrapper.getWrappedInstance();
+//                beanWrapper = new BeanWrapper(newInstance);
                 factoryBeanInstanceCache.put(beanName, beanWrapper);
             }
 
@@ -114,6 +120,39 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
             e.printStackTrace();
         }
         return newInstance;
+    }
+
+    protected BeanWrapper instantiateBean(String beanName, BeanDefinition mbd) throws Exception {
+        Class<?> clazz = Class.forName(mbd.getBeanClassName());
+        //默认调用无参的构造函数
+        Object beanInstance = clazz.newInstance();
+
+        //判断是否需要进行aop
+        //1.创建代理对象
+        AdvisedSupport config = createAdvisedSupport();
+        config.setTargetClass(clazz);
+        config.setTargetSource(beanInstance);
+        //验证是否符合规则
+        if (config.pointCutMatch()) {
+            //创建代理对象
+            beanInstance = new DefaultAopProxyFactory().createAopProxy(config).getProxy();
+        }
+
+        //包装
+        BeanWrapper bw = new BeanWrapper(beanInstance);
+
+        return bw;
+    }
+
+    protected AdvisedSupport createAdvisedSupport() {
+        ProxyConfig config = new ProxyConfig();
+        config.setAspectClass(reader.getConfig().getProperty("aspectClass"));
+        config.setPointCut(reader.getConfig().getProperty("pointCut"));
+        config.setAspectBefore(reader.getConfig().getProperty("aspectBefore"));
+        config.setAspectAfter(reader.getConfig().getProperty("aspectAfter"));
+        config.setAspectAfterThrow(reader.getConfig().getProperty("aspectAfterThrow"));
+        config.setAspectAfterThrowingName(reader.getConfig().getProperty("aspectAfterThrowingName"));
+        return new AdvisedSupport(config);
     }
 
     //属性注入

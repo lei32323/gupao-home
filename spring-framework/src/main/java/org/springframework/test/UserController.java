@@ -4,6 +4,7 @@ import org.springframework.annotation.Autowired;
 import org.springframework.annotation.Controller;
 import org.springframework.annotation.RequestMapping;
 import org.springframework.annotation.RequestParam;
+import org.springframework.test.service.IUserService;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
@@ -22,6 +23,16 @@ public class UserController {
         map.put("name",name);
         map.put("data",data);
         map.put("token",token);
+        userService.hello(name);
+        ModelAndView modelAndView = new ModelAndView("first",map);
+        return modelAndView;
+    }
+
+    @RequestMapping("/add")
+    public ModelAndView add(@RequestParam("name") String name){
+        Map<String,String> map = new HashMap<>();
+        map.put("name",name);
+        userService.hello(name);
         ModelAndView modelAndView = new ModelAndView("first",map);
         return modelAndView;
     }
