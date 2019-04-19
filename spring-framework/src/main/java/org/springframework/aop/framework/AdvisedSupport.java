@@ -61,7 +61,7 @@ public class AdvisedSupport {
                 .replaceAll("\\(", "\\\\(")
                 .replaceAll("\\)", "\\\\)");
         String pointCutForClassRegex = pointCut.substring(0, pointCut.lastIndexOf("\\(") - 4);
-        pointCutClassPattern = Pattern.compile(" *" + pointCutForClassRegex.substring(pointCutForClassRegex.lastIndexOf(" ") + 1));
+        pointCutClassPattern = Pattern.compile(".*" + pointCutForClassRegex.substring(pointCutForClassRegex.lastIndexOf(" ") + 1)+".*");
 
         try {
             //获取织入的类
@@ -130,6 +130,21 @@ public class AdvisedSupport {
             cached = this.methodCache.get(m);
         }
         return cached;
+    }
+
+    public static void main(String[] args) {
+        String pointCut = "public .* org.springframework.test.service..*Service..*(.*)"
+                .replaceAll("\\.", "\\\\.")
+                .replaceAll("\\\\.\\*", ".*")
+                .replaceAll("\\(", "\\\\(")
+                .replaceAll("\\)", "\\\\)");
+        String pointCutForClassRegex = pointCut.substring(0, pointCut.lastIndexOf("\\(") - 4);
+        String aaa = " *" + pointCutForClassRegex.substring(pointCutForClassRegex.lastIndexOf(" ") + 1);
+        System.out.println(aaa);
+        Pattern pointCutClassPattern = Pattern.compile(".*org\\.springframework\\.test\\.service\\..*Service.*");
+        System.out.println("public java.lang.String org.springframework.test.service.UserService.add(java.lang.String)");
+        Matcher matcher = pointCutClassPattern.matcher("public java.lang.String org.springframework.test.service.UserService.add(java.lang.String)");
+        System.out.println(matcher.matches());
     }
 
 }
