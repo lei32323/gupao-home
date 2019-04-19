@@ -3,6 +3,7 @@ package org.springframework.aop.framework;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.framework.adapter.AfterReturningAdviceInterceptor;
 import org.springframework.aop.framework.adapter.AspectJAfterThrowingAdvice;
+import org.springframework.aop.framework.adapter.AspectJAroundAdvice;
 import org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
 
 import java.lang.reflect.Method;
@@ -97,6 +98,9 @@ public class AdvisedSupport {
                     if (config.getAspectAfter() != null && !"".equals(config.getAspectAfter())) {
                         advisors.add(new AfterReturningAdviceInterceptor(aspectMethods.get(config.getAspectAfter()), aspectclazz.newInstance()));
 
+                    }
+                    if (config.getAspectAround() != null && !"".equals(config.getAspectAround())) {
+                        advisors.add(new AspectJAroundAdvice(aspectMethods.get(config.getAspectAround()), aspectclazz.newInstance()));
                     }
                     if (config.getAspectAfterThrow() != null && !"".equals(config.getAspectAfterThrow())) {
                         AspectJAfterThrowingAdvice aspectJAfterThrowingAdvice = new AspectJAfterThrowingAdvice(aspectMethods.get(config.getAspectAfterThrow()), aspectclazz.newInstance());

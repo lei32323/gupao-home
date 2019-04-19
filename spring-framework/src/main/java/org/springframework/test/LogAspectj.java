@@ -1,6 +1,9 @@
 package org.springframework.test;
 
 import org.springframework.aop.aspectj.JoinPoint;
+import org.springframework.aop.aspectj.ProceedingJoinPoint;
+
+import java.lang.reflect.Method;
 
 public class LogAspectj {
 
@@ -15,5 +18,12 @@ public class LogAspectj {
     public void afterThrowing(JoinPoint joinPoint, Throwable tx) {
         System.out.println("出现异常:" + tx.getCause());
 
+    }
+
+    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("之前的操作");
+        //调用方法
+        joinPoint.proceed();
+        System.out.println("之后的操作");
     }
 }

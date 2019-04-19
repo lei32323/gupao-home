@@ -1,5 +1,7 @@
 package org.springframework.aop.aspectj;
 
+import org.aopalliance.intercept.MethodInvocation;
+
 import java.lang.reflect.Method;
 
 public abstract class AbstractAspectJAdvice {
@@ -32,6 +34,10 @@ public abstract class AbstractAspectJAdvice {
                     values[i] = ex;
                 } else if (parameterTypes[i] == Object.class) {
                     values[i] = returnValue;
+                }else if(parameterTypes[i] == ProceedingJoinPoint.class){
+                    //保存当前对象进去
+                    MethodInvocationProceedingJoinPoint methodInvocationProceedingJoinPoint = new MethodInvocationProceedingJoinPoint((MethodInvocation) jp);
+                    values[i] = methodInvocationProceedingJoinPoint;
                 }
             }
             //反射执行

@@ -16,6 +16,13 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
 
     protected Object[] arguments;
 
+    public Object[] getArguments() {
+        return arguments;
+    }
+
+    public void setArguments(Object[] arguments) {
+        this.arguments = arguments;
+    }
 
     private Class<?> targetClass;
 
