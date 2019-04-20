@@ -147,8 +147,8 @@ public class DispatcherServlet extends HttpServlet {
                     continue;
                 }
                 RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                url = url + "/" + mapping.value();
-                handlerMappings.add(new HandlerMapping(url.replaceAll("//+", "/"), method, bean));
+                String methodUrl = url + "/" + mapping.value();
+                handlerMappings.add(new HandlerMapping(methodUrl.replaceAll("//+", "/"), method, bean));
             }
         }
     }

@@ -152,6 +152,7 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
         config.setAspectAfter(reader.getConfig().getProperty("aspectAfter"));
         config.setAspectAfterThrow(reader.getConfig().getProperty("aspectAfterThrow"));
         config.setAspectAfterThrowingName(reader.getConfig().getProperty("aspectAfterThrowingName"));
+        config.setAspectAround(reader.getConfig().getProperty("aspectAround"));
         return new AdvisedSupport(config);
     }
 

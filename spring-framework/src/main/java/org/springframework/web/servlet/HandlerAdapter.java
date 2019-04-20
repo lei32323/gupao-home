@@ -15,7 +15,7 @@ import java.util.Map;
 public class HandlerAdapter {
 
     public boolean supports(Object handler) {
-        return handler instanceof HandlerAdapter;
+        return handler instanceof HandlerMapping;
     }
 
     public ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) {

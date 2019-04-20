@@ -17,4 +17,6 @@ public class ProxyConfig {
 
     private String aspectAfterThrowingName;
 
+    private String aspectAround;
+
 }
