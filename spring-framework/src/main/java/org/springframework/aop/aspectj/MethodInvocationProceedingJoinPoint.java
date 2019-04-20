@@ -4,7 +4,7 @@ import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.Method;
 
-public class MethodInvocationProceedingJoinPoint implements JoinPoint, MethodInvocation {
+public class MethodInvocationProceedingJoinPoint implements JoinPoint, MethodInvocation,ProceedingJoinPoint {
 
     private MethodInvocation methodInvocation;
 
@@ -33,6 +33,11 @@ public class MethodInvocationProceedingJoinPoint implements JoinPoint, MethodInv
         //执行当前对象
         return this.methodInvocation.proceed();
 //        return this.methodInvocation.invocableClone().proceed();
+    }
+
+    @Override
+    public Object proceed(Object[] args) throws Throwable {
+        return null;
     }
 
 

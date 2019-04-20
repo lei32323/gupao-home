@@ -23,7 +23,7 @@ public class LogAspectj {
     public void around(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("之前的操作");
         //调用方法
-        joinPoint.proceed();
+        System.out.println(joinPoint.proceed());
         System.out.println("之后的操作");
     }
 }
