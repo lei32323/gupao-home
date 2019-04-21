@@ -16,16 +16,10 @@ public class MethodBeforeAdviceInterceptor extends AbstractAspectJAdvice impleme
 
     @Override
     public Object invoke(MethodInvocation mi) throws Throwable {
-        before(mi.getMethod(), mi.getArgs(), mi.getThis());
-        //调用当前方法执行
+        //执行 织入的方法
         super.invokeAdviceMethod(mi, null, null);
-        //调用链
+        //调用下一个
         return mi.proceed();
     }
 
-    //调用before方法
-    private void before(Method method, Object[] args, Object target) throws Throwable {
-        //直接执行
-        method.invoke(target, args);
-    }
 }

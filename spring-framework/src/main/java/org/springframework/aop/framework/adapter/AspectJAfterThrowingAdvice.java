@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 //异常捕获拦截器
 public class AspectJAfterThrowingAdvice extends AbstractAspectJAdvice implements MethodInterceptor, Advisor {
 
+    //捕获的类型
     private Class<?> discoveredThrowingType;
 
     public void setDiscoveredThrowingType(String discoveredThrowingTypeString) {
@@ -29,9 +30,12 @@ public class AspectJAfterThrowingAdvice extends AbstractAspectJAdvice implements
     @Override
     public Object invoke(MethodInvocation mi) throws Throwable {
         try {
+            //执行链路
             return mi.proceed();
         } catch (Exception e) {
+            //捕获异常
             if (shouldInvokeOnThrowing(e)) {
+                //执行织入的函数
                 super.invokeAdviceMethod(mi, null, e);
             }
             throw e;

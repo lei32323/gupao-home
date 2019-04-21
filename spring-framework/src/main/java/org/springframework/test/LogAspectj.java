@@ -3,6 +3,7 @@ package org.springframework.test;
 import org.springframework.aop.aspectj.JoinPoint;
 import org.springframework.aop.aspectj.ProceedingJoinPoint;
 
+import javax.jws.Oneway;
 import java.lang.reflect.Method;
 
 public class LogAspectj {

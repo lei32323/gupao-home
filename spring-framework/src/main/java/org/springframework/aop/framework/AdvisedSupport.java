@@ -16,17 +16,19 @@ import java.util.regex.Pattern;
 
 public class AdvisedSupport {
 
-    //原始对象
+    //需要被织入的对象
     private Object targetSource;
 
-    //原始对象类型
+    //需要被织入的对象类型
     private Class<?> targetClass;
 
     //存储method对应的adivsor集合 链路集合
     private Map<Method, List<Advisor>> methodCache;
 
+    //保存 aop切面的正则
     private Pattern pointCutClassPattern;
 
+    //配置文件
     private ProxyConfig config;
 
 
@@ -78,8 +80,9 @@ public class AdvisedSupport {
             //遍历当前传入的类是否满足进行aop切面
             Method[] targetMethods = targetClass.getDeclaredMethods();
             for (int i = 0; i < targetMethods.length; i++) {
+               Method targetMethod =  targetMethods[i];
                 //获取方法的toString()
-                String targetMethodString = targetMethods[i].toString();
+                String targetMethodString = targetMethod.toString();
                 //判断是否有throws
                 if (targetMethodString.contains("throws")) {
                     targetMethodString = targetMethodString.substring(0, targetMethodString.indexOf("throws")).trim();
@@ -95,20 +98,23 @@ public class AdvisedSupport {
                         //创建拦截器
                         advisors.add(new MethodBeforeAdviceInterceptor(aspectMethods.get(config.getAspectBefore()), aspectclazz.newInstance()));
                     }
+
                     if (config.getAspectAfter() != null && !"".equals(config.getAspectAfter())) {
                         advisors.add(new AfterReturningAdviceInterceptor(aspectMethods.get(config.getAspectAfter()), aspectclazz.newInstance()));
-
                     }
+
                     if (config.getAspectAround() != null && !"".equals(config.getAspectAround())) {
                         advisors.add(new AspectJAroundAdvice(aspectMethods.get(config.getAspectAround()), aspectclazz.newInstance()));
                     }
+
                     if (config.getAspectAfterThrow() != null && !"".equals(config.getAspectAfterThrow())) {
                         AspectJAfterThrowingAdvice aspectJAfterThrowingAdvice = new AspectJAfterThrowingAdvice(aspectMethods.get(config.getAspectAfterThrow()), aspectclazz.newInstance());
                         aspectJAfterThrowingAdvice.setDiscoveredThrowingType(config.getAspectAfterThrowingName());
                         advisors.add(aspectJAfterThrowingAdvice);
                     }
+
                     //缓存起来
-                    methodCache.put(targetMethods[i], advisors);
+                    methodCache.put(targetMethod, advisors);
                 }
 
             }
@@ -126,9 +132,11 @@ public class AdvisedSupport {
 
     //获取所有的拦截器
     public List<Advisor> getInterceptorsAndDynamicInterceptionAdvice(Method method, Class<?> targetClass) throws Exception {
+        //从缓存中获取
         List<Advisor> cached = this.methodCache.get(method);
+        //如果传入的method 在缓存中 不存在
         if (cached == null) {
-            //从原始对象类型中获取method
+            //根据传入的mehtod的名称和参数类型 去被织入的对象中找到method
             Method m = targetClass.getDeclaredMethod(method.getName(), method.getParameterTypes());
             //在根据m去cache获取
             cached = this.methodCache.get(m);

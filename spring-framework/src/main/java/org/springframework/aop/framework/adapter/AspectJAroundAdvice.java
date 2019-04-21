@@ -20,9 +20,4 @@ public class AspectJAroundAdvice extends AbstractAspectJAdvice implements Method
         return super.invokeAdviceMethod(mi, null, null);
     }
 
-    protected MethodInvocation lazyGetProceedingJoinPoint(MethodInvocation mi) {
-        return new MethodInvocationProceedingJoinPoint(mi);
-    }
-
-
 }

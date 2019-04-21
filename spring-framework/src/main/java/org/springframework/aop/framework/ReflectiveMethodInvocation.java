@@ -10,10 +10,13 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
 
     protected Object proxy;
 
+    //被织入的实例
     protected Object target;
 
+    //被织入的方法
     protected Method method;
 
+    //被注入的方法的参数
     protected Object[] arguments;
 
     public Object[] getArguments() {
@@ -26,8 +29,10 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
 
     private Class<?> targetClass;
 
+    //当前method对应的 advisor
     protected List<?> interceptorsAndDynamicMethodMatchers;
 
+    //当前advisor调用的位置
     private int currentInterceptorIndex = -1;
 
 
