@@ -27,8 +27,10 @@ public class StatementHandler {
             preparedStatement = connection.prepareStatement(sql);
 
             //设置参数
+
             ParameterHandler parameterHandler = new ParameterHandler(preparedStatement);
             parameterHandler.setParameter(args);
+
 
             //执行
             resultSet = preparedStatement.executeQuery();

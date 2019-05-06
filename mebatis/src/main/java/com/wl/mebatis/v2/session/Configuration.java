@@ -6,6 +6,8 @@ import com.wl.mebatis.v2.binding.MapperRegister;
 import com.wl.mebatis.v2.executor.CachingExecutor;
 import com.wl.mebatis.v2.executor.Executor;
 import com.wl.mebatis.v2.executor.SimpleExecutor;
+import com.wl.mebatis.v2.plugin.Interceptor;
+import com.wl.mebatis.v2.plugin.InterceptorChain;
 
 import java.io.File;
 import java.lang.reflect.Method;
@@ -27,6 +29,8 @@ public class Configuration {
     //保存接口方法和sql的映射关系
     private Map<String, String> mapperStatement = new HashMap<String, String>();
 
+    private InterceptorChain interceptorChain = new InterceptorChain();
+
 
     //初始化的时候 解析
     public Configuration() {
@@ -34,11 +38,29 @@ public class Configuration {
         sqlMappings = ResourceBundle.getBundle("sql");
         configMappings = ResourceBundle.getBundle("mysql");
 
+        //加载拦截器
+        parseInterceptor(sqlMappings.getString("plugin.path"));
+
         //解析mapper  顺便解析注解
         parseMapper(configMappings.getString("mapper.path"));
 
         //解析sql保存起来
         parseSql();
+    }
+
+    //加载拦截器
+    private void parseInterceptor(String clazz) {
+        if (clazz == null || "".equals(clazz)) {
+            return;
+        }
+        try {
+            Object interceptor = Class.forName(clazz).newInstance();
+            if (interceptor instanceof Interceptor) {
+                this.interceptorChain.addInterceptor((Interceptor) interceptor);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //解析sql
@@ -74,7 +96,7 @@ public class Configuration {
                 parseMapper(mapperPathScan + "." + f.getName());
             } else {
                 //保存
-                String mapperClassPath = mapperPathScan + "." + (f.getName().replace(".class",""));
+                String mapperClassPath = mapperPathScan + "." + (f.getName().replace(".class", ""));
                 try {
                     Class<?> clazz = Class.forName(mapperClassPath);
                     //不是接口的话不算
@@ -110,7 +132,7 @@ public class Configuration {
 
 
     //获取mapper
-    public <T> T getMapper(Class<T> clazz,DefaultSqlSession sqlSession) {
+    public <T> T getMapper(Class<T> clazz, DefaultSqlSession sqlSession) {
         return mapperRegister.getMapper(clazz, sqlSession);
     }
 
@@ -128,6 +150,13 @@ public class Configuration {
             //走默认的
             executor = new SimpleExecutor();
         }
+
+        //判断是否有拦截器
+        if (interceptorChain.hasPlugin()) {
+            //返回拦截器的代理对象
+           return (Executor) interceptorChain.pluginAll(executor);
+        }
+
         return executor;
     }
 }
