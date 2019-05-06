@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybaits.demo.dao.BlogMapper">
+    <resultMap id="BaseResultMap" type="com.mybaits.demo.entity.Blog">
+        <id column="bid" jdbcType="INTEGER" property="bid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="author_id" jdbcType="INTEGER" property="authorId"/>
+    </resultMap>
+
+    <resultMap id="BolgAndAuthor" type="com.mybaits.demo.entity.Blog">
+        <id column="bid" jdbcType="INTEGER" property="bid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <association property="author" javaType="com.mybaits.demo.entity.Author" column="author_id">
+            <id column="author_id" property="authorId"></id>
+            <result column="author_name" property="authorName"/>
+        </association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    bid, name, author_id
+  </sql>
+
+    <sql id="Comment_Column_List">
+         bid,
+         name,
+         author_id,
+         comment
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BolgAndAuthor">
+        SELECT b.*,a.*
+        FROM blog b ,author a
+        WHERE b.author_id = a.author_id
+          AND b.bid = #{bid,jdbcType=INTEGER}
+  </select>
+
+
+    <insert id="insertByTypHandler" parameterType="com.mybaits.demo.entity.Blog">
+       insert into blog (bid, name, author_id,comment)
+    values (#{bid,jdbcType=INTEGER},
+            #{name,jdbcType=VARCHAR},
+            #{authorId,jdbcType=INTEGER},
+            #{comment,jdbcType=VARCHAR,typeHandler=com.mybaits.demo.handler.MyTypeHandler})
+    </insert>
+
+    <select id="selectByTypHandler" parameterType="blog" resultMap="BaseResultMap">
+        select
+        <include refid="Comment_Column_List"/>
+        from blog
+        where name = #{name,jdbcType=NVARCHAR}
+    </select>
+
+    <resultMap id="BaseResultMap2" type="com.mybaits.demo.entity.Blog">
+        <id column="bid" jdbcType="INTEGER" property="bid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="author_id" jdbcType="INTEGER" property="authorId"/>
+        <result column="comment" property="comment" typeHandler="com.mybaits.demo.handler.MyTypeHandler"/>
+    </resultMap>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap2">
+        select
+        <include refid="Comment_Column_List"/>
+        from blog
+        where bid = #{bid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByName" parameterType="blog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from blog
+        where name = '${name}'
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from blog
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.mybaits.demo.entity.Blog">
+    insert into blog (bid, name, author_id
+      )
+    values (#{bid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{authorId,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.mybaits.demo.entity.Blog">
+        insert into blog
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                bid,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="authorId != null">
+                author_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bid != null">
+                #{bid,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="authorId != null">
+                #{authorId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mybaits.demo.entity.Blog">
+        update blog
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="authorId != null">
+                author_id = #{authorId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where bid = #{bid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mybaits.demo.entity.Blog">
+    update blog
+    set name = #{name,jdbcType=VARCHAR},
+      author_id = #{authorId,jdbcType=INTEGER}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+
+    <resultMap id="bolgAndAuthor2" type="com.mybaits.demo.entity.Blog">
+        <id column="bid" jdbcType="INTEGER" property="bid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <association property="author" javaType="com.mybaits.demo.entity.Author"
+                     column="author_id" select="selectAuthorByAuthorId" fetchType="lazy"/>
+
+    </resultMap>
+
+    <select id="selectAuthorByAuthorId" resultType="com.mybaits.demo.entity.Author">
+        SELECT  author_id authorId,author_name authorName
+         FROM author
+         WHERE author_id = #{aid,jdbcType=INTEGER}
+    </select>
+
+
+    <select id="selectByPrimaryKey2" parameterType="java.lang.Integer" resultMap="bolgAndAuthor2">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM blog
+        WHERE bid = #{bid,jdbcType=INTEGER}
+    </select>
+
+</mapper>
