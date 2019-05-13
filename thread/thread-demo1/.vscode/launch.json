@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - NoLock",
+            "request": "launch",
+            "mainClass": "com.wl.thread.lock.NoLock",
+            "projectName": "thread-demo1"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - VolatileDemo1",
+            "request": "launch",
+            "mainClass": "com.wl.thread.vola.VolatileDemo1",
+            "projectName": "thread-demo1"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SynchronizedDemo",
+            "request": "launch",
+            "mainClass": "com.wl.thread.syn.SynchronizedDemo",
+            "projectName": "thread-demo1"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SynchronizedDemo1",
+            "request": "launch",
+            "mainClass": "com.wl.thread.syn.SynchronizedDemo1",
+            "projectName": "thread-demo1"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Demo1",
+            "request": "launch",
+            "mainClass": "com.wl.thread.syn.Demo1",
+            "projectName": "thread-demo1"
+        }
+    ]
+}
