@@ -1,0 +1,27 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="user-server" owner="wanglei"/>
+
+    <dubbo:registry address="zookeeper://172.31.180.242:2181" id="reg1" />
+
+    <dubbo:registry address="zookeeper://172.31.180.243:2181" id="reg2"/>
+
+    <dubbo:protocol port="20881" name="dubbo" id="pol1" />
+
+    <!-- 设置 rest风格，使用jetty 容器-->
+    <dubbo:protocol port="8888" name="rest" id="pol2" server="jetty"/>
+
+    <dubbo:service interface="com.wl.user.api.UserService" ref="userService" protocol="pol1" registry="reg1,reg2"/>
+
+    <!-- 设置 独立的注册中心-->
+    <dubbo:service interface="com.wl.user.api.LoginService" ref="loginService" protocol="pol2" registry="reg2"/>
+
+    <bean id="userService" class="com.wl.user.service.UserServiceImpl"></bean>
+
+    <bean id="loginService" class="com.wl.user.service.LoginServiceImpl"/>
+
+</beans>
